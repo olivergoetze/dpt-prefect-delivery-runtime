@@ -1,10 +1,7 @@
-FROM prefecthq/prefect:latest-python3.8
+FROM prefecthq/prefect:2.8.4-python3.11
 
-# Linux dependencies
-RUN apt-get update && apt-get install -y git
-
-# Prefect extras for Dask on Kubernetes
-RUN pip install "prefect[kubernetes]==1.*"
+# extra pip packages for Dask on Kubernetes and S3
+RUN pip install s3fs prefect-dask
 
 # base Python dependencies
 RUN pip install python-dotenv paramiko
